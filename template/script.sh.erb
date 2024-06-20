@@ -41,5 +41,5 @@ export SING_BINDS="$SING_BINDS -B /usr/lib64/libmunge.so.2.0.0"
 echo "TIMING: $(date -Iseconds) - Launching desktop <%= context.desktop %>"
 
 chmod +x "<%= session.staged_root.join("desktops", "#{context.desktop}.sh") %>"
-singularity exec $SING_BINDS $container_image "<%= session.staged_root.join("desktops", "#{context.desktop}.sh" %>"
+singularity exec $SING_BINDS $container_image "<%= session.staged_root.join("desktops", "#{context.desktop}.sh") %>"
 echo "TIMING: $(date -Iseconds) - Desktop <%= context.desktop %> ended."
