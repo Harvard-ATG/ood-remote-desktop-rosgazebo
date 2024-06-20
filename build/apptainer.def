@@ -4,4 +4,6 @@ From: ubuntu:24.04
 %post
 apt update -y && \
 DEBIAN_FRONTEND=noninteractive apt install -y \
-    xfce4
+    xfce4 \
+    language-pack-en-base
+dpkg-reconfigure locales
