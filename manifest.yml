@@ -1,0 +1,7 @@
+---
+name: Remote Desktop
+category: Interactive Apps
+subcategory: Desktops
+role: batch_connect
+description: |
+  This form will launch a remote desktop with a basic interface.

@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+echo "TIMING: $(date -Iseconds) - Start script"
+
+# Validate home directory and set it to what it should be
+echo "original HOME=$HOME"
+echo "user=$(id -nu)"
+export HOME="/shared/home/$(id -nu)"
+echo "new HOME=$HOME"
+
+# Change working directory to user's home directory
+cd "${HOME}"
+
+set -x
+
+# Activate spack and enter apptainer environment
+. /shared/spack/share/spack/setup-env.sh
+echo "TIMING: $(date -Iseconds) - Loaded spack"
+which spack
+spack env activate apptainer
+echo "TIMING: $(date -Iseconds) - Loaded environment"
+
+# Set which container to use
+container_image=/shared/apptainer_images/<%= context.desktop %>.sif
+
+export SING_BINDS=""
+export SING_BINDS="$SING_BINDS -B /etc/nsswitch.conf"
+export SING_BINDS="$SING_BINDS -B /etc/sssd/"
+export SING_BINDS="$SING_BINDS -B /var/lib/sss"
+export SING_BINDS="$SING_BINDS -B /etc/slurm"
+export SING_BINDS="$SING_BINDS -B /slurm"
+export SING_BINDS="$SING_BINDS -B /var/run/munge"
+export SING_BINDS="$SING_BINDS -B `which sbatch `"
+export SING_BINDS="$SING_BINDS -B `which srun `"
+export SING_BINDS="$SING_BINDS -B `which sacct `"
+export SING_BINDS="$SING_BINDS -B `which scontrol `"
+export SING_BINDS="$SING_BINDS -B /usr/lib64/slurm/
+export SING_BINDS="$SING_BINDS -B /usr/lib64/libmunge.so.2"
+export SING_BINDS="$SING_BINDS -B /usr/lib64/libmunge.so.2.0.0"
+
+echo "TIMING: $(date -Iseconds) - Launching desktop <%= context.desktop %>"
+
+chmod +x "<%= session.staged_root.join("desktops", "#{context.desktop}.sh"%>"
+singularity exec $SING_BINDS $container_image "<%= session.staged_root.join("desktops", "#{context.desktop}.sh"%>"
+echo "TIMING: $(date -Iseconds) - Desktop <%= context.desktop %> ended."
