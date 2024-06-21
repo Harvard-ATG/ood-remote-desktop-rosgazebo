@@ -5,5 +5,27 @@ From: ubuntu:24.04
 apt update -y && \
 DEBIAN_FRONTEND=noninteractive apt install -y \
     xfce4 \
+    dbus-x11 \
+    xdg-utils \
+    x11-utils \
+    curl \
+    build-essential \
+    libxtst6 \
+    libgl1-mesa-dev \
+    libglew-dev \
+    libosmesa6-dev \
+    locales \
+    xfce4-terminal \
+    firefox \
+    vim \
     language-pack-en-base
+    # Packages that don't work
+    # lsb-core \
+    # ros-melodic-desktop-full \
+    # python-rosdep \
+    # python-rosinstall \
+    # python-rosinstall-generator \
+    # python-wstool \
+    # libegl1-mesa \
+    # libgl1-mesa-glx \
 dpkg-reconfigure locales
