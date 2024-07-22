@@ -1,18 +1,18 @@
 #!/bin/bash
 
 export SING_OVERLAYS=""
-#
-#
-<%- if !context.custom_desktop.to_i.zero? -%> 
+
 ## create custom desktop folder
 export DESKTOP_FOLDER="${PWD}/desktop"
 export XDG_DESKTOP_DIR=$DESKTOP_FOLDER
 mkdir -p $DESKTOP_FOLDER
+echo "TIMING: $(date -Iseconds) - set up desktop folder"
 
 ## create the configuration folder
 export XDG_CONFIG_HOME=$PWD/config
 mkdir -p $XDG_CONFIG_HOME
 export XDG_CONFIG_DIRS=$XDG_CONFIG_HOME
+echo "TIMING: $(date -Iseconds) - set up config folder"
 
 ## we set a separate desktop folder, but unique Documents , etc etc 
 cat > $XDG_CONFIG_DIRS/user-dirs.dirs  <<EOF
@@ -25,3 +25,4 @@ XDG_PUBLICSHARE_DIR="$HOME/Public"
 XDG_TEMPLATES_DIR="$HOME/Templates"
 XDG_VIDEOS_DIR="$HOME/Videos"
 EOF
+echo "TIMING: $(date -Iseconds) - set up user dirs folder"
