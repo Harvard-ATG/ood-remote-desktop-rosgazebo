@@ -1,6 +1,7 @@
 ---
 batch_connect:
-  template: "basic"
+  template: "vnc"
+  websockify_cmd: "/usr/local/bin/websockify"
   set_host: "host=$(hostname | awk '{print $1}').<%= cluster%>.pcluster"
 script:
   native:
