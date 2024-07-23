@@ -1,6 +1,6 @@
 # OOD Remote Desktop - Apptainer
 
-This repo contains a working configuration to run a remote desktop in an apptainer configuration in Open OnDemand in the HUIT OOD environment. It requires a [spack]() environment to use [apptainer]() commands, and also requires a built container that exists in a location accessible to compute nodes. In this case that's a shared EFS volume.
+This repo contains a working configuration to run a remote desktop in an apptainer configuration in Open OnDemand in the HUIT OOD environment. It requires a [spack](https://spack.io/) environment to use [apptainer](https://apptainer.org/) commands, and also requires a built container that exists in a location accessible to compute nodes. In this case that's a shared EFS volume.
 
 ## Compute Nodes
 
