@@ -1,7 +1,8 @@
 ---
-name: Remote Desktop
+name: Remote Desktop (Base)
+icon: fa://desktop
 category: Interactive Apps
 subcategory: Desktops
 role: batch_connect
 description: |
-  This form will launch a remote desktop with a basic interface.
+  This form will launch a remote desktop with a basic xfce interface.
