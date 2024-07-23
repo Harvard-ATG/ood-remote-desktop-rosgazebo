@@ -41,5 +41,5 @@ export SING_BINDS=""
 echo "TIMING: $(date -Iseconds) - Launching desktop <%= context.desktop %>"
 
 chmod +x "<%= session.staged_root.join("desktops", "#{context.desktop}.sh") %>"
-singularity exec $SING_BINDS $container_image "<%= session.staged_root.join("desktops", "#{context.desktop}.sh") %>"
+apptainer exec $SING_BINDS $container_image "<%= session.staged_root.join("desktops", "#{context.desktop}.sh") %>"
 echo "TIMING: $(date -Iseconds) - Desktop <%= context.desktop %> ended."
