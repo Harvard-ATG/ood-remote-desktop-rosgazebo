@@ -12,7 +12,7 @@ form:
   - bc_vnc_resolution
   - bc_queue
 attributes:
-  desktop: "xfce"
+  desktop: "rosgazebo"
   bc_num_slots: null
   custom_num_cores:
     widget: "number_field"
