@@ -1,5 +1,5 @@
 ---
-title: Remote Desktop - Base
+title: Remote Desktop - ROS/Gazebo
 cluster: "*"
 form:
   - bc_num_hours
