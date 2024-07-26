@@ -47,13 +47,13 @@ DEBIAN_FRONTEND=noninteractive apt install -y \
 rm -rf /var/lib/apt/lists/*
 
 # Install VirtualGL (https://github.com/VirtualGL/virtualgl)
-cd /tmp
+cd
 curl -LO https://github.com/VirtualGL/virtualgl/releases/download/3.1.1/virtualgl_3.1.1_amd64.deb
-dpkg -i /tmp/virtualgl_3.1.1_amd64.deb && rm -f /tmp/virtualgl_3.1.1_amd64.deb
+dpkg -i ~/virtualgl_3.1.1_amd64.deb && rm -f ~/virtualgl_3.1.1_amd64.deb
 
 # Install VS Codium
 curl -LO https://github.com/VSCodium/vscodium/releases/download/1.91.1.24193/codium_1.91.1.24193_amd64.deb
-dpkg -i /tmp/codium_1.91.1.24193_amd64.deb && rm -f /tmp/codium_1.91.1.24193_amd64.deb
+dpkg -i ~/codium_1.91.1.24193_amd64.deb && rm -f ~/codium_1.91.1.24193_amd64.deb
 
 # Install Firefox
 apt update -y && \
