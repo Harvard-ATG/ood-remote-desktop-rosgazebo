@@ -41,10 +41,20 @@ rm -rf /var/lib/apt/lists/*
 rosdep init && rosdep update
 
 # Install universal robots from package manager
-apt update -y && \
-DEBIAN_FRONTEND=noninteractive apt install -y \
-    ros-noetic-universal-robots && \
-rm -rf /var/lib/apt/lists/*
+# apt update -y && \
+# DEBIAN_FRONTEND=noninteractive apt install -y \
+#     ros-noetic-universal-robots && \
+# rm -rf /var/lib/apt/lists/*
+
+# Install Universal Robots from GitHub
+mkdir -p /opt/catkin_ws/src && \
+    cd /opt/catkin_ws/src && \
+    git clone --branch noetic-devel https://github.com/ros-industrial/universal_robot.git
+cd /opt/catkin_ws && rosdep update && \
+    apt -y update && \
+    DEBIAN_FRONTEND=noninteractive rosdep install --rosdistro melodic --ignore-src --from-paths src --default-yes  && \
+    catkin_make && \
+    rm -rf /var/lib/apt/lists/*
 
 # Install VirtualGL (https://github.com/VirtualGL/virtualgl)
 cd
