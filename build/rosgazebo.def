@@ -11,6 +11,8 @@ DEBIAN_FRONTEND=noninteractive apt install -y \
     xfce4 \
     xfce4-terminal \
     vim \
+    git \
+    xdg-utils \
     language-pack-en-base && \
 rm -rf /var/lib/apt/lists/*
 
