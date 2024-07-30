@@ -1,0 +1,62 @@
+Bootstrap: docker
+From: ubuntu:20.04
+
+%post
+# Install packages needed for baseline desktop and ros installation
+apt update -y && \
+DEBIAN_FRONTEND=noninteractive apt install -y \
+    curl \
+    lsb-release \
+    gnupg \
+    xfce4 \
+    xfce4-terminal \
+    vim \
+    language-pack-en-base && \
+rm -rf /var/lib/apt/lists/*
+
+dpkg-reconfigure locales
+
+# Install ROS software
+# See http://wiki.ros.org/noetic/Installation/Ubuntu for overview of install process
+# Configure apt repository for ROS
+echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list
+curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | apt-key add -
+
+# Install ROS
+apt update -y && \
+DEBIAN_FRONTEND=noninteractive apt install -y ros-noetic-desktop-full && \
+rm -rf /var/lib/apt/lists/*
+
+# Install dependencies for building packages
+apt update -y && \
+DEBIAN_FRONTEND=noninteractive apt install -y \
+    python3-rosdep \
+    python3-rosinstall \
+    python3-rosinstall-generator \
+    python3-wstool \
+    build-essential && \
+rm -rf /var/lib/apt/lists/*
+
+# Initialize rosdep
+rosdep init && rosdep update
+
+# Install universal robots from package manager
+apt update -y && \
+DEBIAN_FRONTEND=noninteractive apt install -y \
+    ros-noetic-universal-robots && \
+rm -rf /var/lib/apt/lists/*
+
+# Install VirtualGL (https://github.com/VirtualGL/virtualgl)
+cd
+curl -LO https://github.com/VirtualGL/virtualgl/releases/download/3.1.1/virtualgl_3.1.1_amd64.deb
+dpkg -i ~/virtualgl_3.1.1_amd64.deb && rm -f ~/virtualgl_3.1.1_amd64.deb
+
+# Install VS Codium
+curl -LO https://github.com/VSCodium/vscodium/releases/download/1.91.1.24193/codium_1.91.1.24193_amd64.deb
+dpkg -i ~/codium_1.91.1.24193_amd64.deb && rm -f ~/codium_1.91.1.24193_amd64.deb
+
+# Install Firefox
+apt update -y && \
+DEBIAN_FRONTEND=noninteractive apt install -y \
+    firefox && \
+rm -rf /var/lib/apt/lists/*

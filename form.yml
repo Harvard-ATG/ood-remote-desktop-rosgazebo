@@ -1,10 +1,11 @@
 ---
-title: Remote Desktop - Base
+title: Remote Desktop - ROS/Gazebo
 cluster: "*"
 form:
   - bc_num_hours
   - bc_num_slots
-  - desktop
+  - image_file
+  - launch_script
   - custom_num_cores
   - node_type
   # VNC settings
@@ -12,7 +13,8 @@ form:
   - bc_vnc_resolution
   - bc_queue
 attributes:
-  desktop: "xfce"
+  image_file: "libgazebo.sif"
+  launch_script: "xfce.sh"
   bc_num_slots: null
   custom_num_cores:
     widget: "number_field"

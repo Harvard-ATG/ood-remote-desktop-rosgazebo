@@ -21,7 +21,7 @@ spack env activate apptainer
 echo "TIMING: $(date -Iseconds) - Loaded environment"
 
 # Set which container to use
-container_image=/shared/apptainerImages/<%= context.desktop %>.sif
+container_image=/shared/apptainerImages/<%= context.image_file %>
 
 export SING_BINDS=""
 # export SING_BINDS="$SING_BINDS -B /etc/nsswitch.conf"
@@ -38,8 +38,8 @@ export SING_BINDS=""
 # export SING_BINDS="$SING_BINDS -B /usr/lib64/libmunge.so.2"
 # export SING_BINDS="$SING_BINDS -B /usr/lib64/libmunge.so.2.0.0"
 
-echo "TIMING: $(date -Iseconds) - Launching desktop <%= context.desktop %>"
+echo "TIMING: $(date -Iseconds) - Launching image <%= context.image_file %> with script <%= context.launch_script %>"
 
-chmod +x "<%= session.staged_root.join("desktops", "#{context.desktop}.sh") %>"
-apptainer exec $SING_BINDS $container_image "<%= session.staged_root.join("desktops", "#{context.desktop}.sh") %>"
-echo "TIMING: $(date -Iseconds) - Desktop <%= context.desktop %> ended."
+chmod +x "<%= session.staged_root.join("desktops", "#{context.launch_script}") %>"
+apptainer exec $SING_BINDS $container_image "<%= session.staged_root.join("desktops", "#{context.launch_script}") %>"
+echo "TIMING: $(date -Iseconds) - Session with image <%= context.image_file %> ended."

@@ -1,5 +1,5 @@
 ---
-name: Remote Desktop (Base)
+name: Remote Desktop (ROS/Gazebo)
 icon: fa://desktop
 category: Interactive Apps
 subcategory: Desktops

@@ -26,3 +26,33 @@ XDG_TEMPLATES_DIR="$HOME/Templates"
 XDG_VIDEOS_DIR="$HOME/Videos"
 EOF
 echo "TIMING: $(date -Iseconds) - set up user dirs folder"
+
+# Create a desktop icon for Gazebo
+cat > $DESKTOP_FOLDER/Gazebo.desktop <<EOF
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Gazebo 11
+Comment=3-D Robot simulator
+Exec=/usr/bin/gazebo
+Icon=gazebo
+Path=
+Terminal=false
+StartupNotify=true
+EOF
+chmod +x $DESKTOP_FOLDER/Gazebo.desktop
+
+# Create a desktop icon for VS Codium
+cat > $DESKTOP_FOLDER/VSCodium.desktop <<EOF
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=VSCodium
+Comment=Code editor
+Exec=/usr/share/codium/codium %F
+Icon=vscodium
+Path=
+Terminal=false
+StartupNotify=false
+EOF
+chmod +x $DESKTOP_FOLDER/VSCodium.desktop
