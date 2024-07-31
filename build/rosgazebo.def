@@ -4,8 +4,8 @@ From: ubuntu:20.04
 %post
 # Install packages needed for baseline desktop and ros installation
 echo "$(date -Iminutes) START - apt package install" && \
-apt update -y && \
-DEBIAN_FRONTEND=noninteractive apt install -y \
+apt-get update -y && \
+DEBIAN_FRONTEND=noninteractive apt-get install -y \
     curl \
     lsb-release \
     gnupg \
@@ -29,8 +29,8 @@ echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt
 curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | apt-key add -
 
 # Install ROS
-apt update -y && \
-DEBIAN_FRONTEND=noninteractive apt install -y \
+apt-get update -y && \
+DEBIAN_FRONTEND=noninteractive apt-get install -y \
     ros-noetic-desktop-full \
     ros-noetic-roslaunch && \
 rm -rf /var/lib/apt/lists/*
@@ -38,8 +38,8 @@ echo "$(date -Iminutes) END - ROS software install"
 
 # Install dependencies for building packages
 echo "$(date -Iminutes) START - install dependencies for building ROS packages" && \
-apt update -y && \
-DEBIAN_FRONTEND=noninteractive apt install -y \
+apt-get update -y && \
+DEBIAN_FRONTEND=noninteractive apt-get install -y \
     python3-rosdep \
     python3-rosinstall \
     python3-rosinstall-generator \
@@ -54,8 +54,8 @@ rosdep init && rosdep update
 echo "$(date -Iminutes) END - initialize rosdep"
 
 # Install universal robots from package manager
-# apt update -y && \
-# DEBIAN_FRONTEND=noninteractive apt install -y \
+# apt-get update -y && \
+# DEBIAN_FRONTEND=noninteractive apt-get install -y \
 #     ros-noetic-universal-robots && \
 # rm -rf /var/lib/apt/lists/*
 
@@ -65,7 +65,7 @@ mkdir -p /opt/catkin_ws/src && \
     cd /opt/catkin_ws/src && \
     git clone --branch noetic-devel https://github.com/ros-industrial/universal_robot.git
 cd /opt/catkin_ws && rosdep update && \
-    apt -y update && \
+    apt-get update -y && \
     DEBIAN_FRONTEND=noninteractive rosdep install --rosdistro noetic --ignore-src --from-paths src --default-yes  && \
     catkin_make && \
     rm -rf /var/lib/apt/lists/*
@@ -86,8 +86,8 @@ echo "$(date -Iminutes) END - Install VS Codium"
 
 # Install Firefox
 echo "$(date -Iminutes) START - Install Firefox"
-apt update -y && \
-DEBIAN_FRONTEND=noninteractive apt install -y \
+apt-get update -y && \
+DEBIAN_FRONTEND=noninteractive apt-get install -y \
     firefox && \
 rm -rf /var/lib/apt/lists/*
 echo "$(date -Iminutes) END - Install Firefox"
