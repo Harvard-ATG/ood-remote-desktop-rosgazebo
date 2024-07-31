@@ -14,6 +14,7 @@ DEBIAN_FRONTEND=noninteractive apt install -y \
     vim \
     git \
     xdg-utils \
+    apt-utils \
     language-pack-en-base && \
 rm -rf /var/lib/apt/lists/* && \
 echo "$(date -Iminutes) END - apt package install"
