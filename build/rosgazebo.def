@@ -29,7 +29,9 @@ curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | apt-key
 
 # Install ROS
 apt update -y && \
-DEBIAN_FRONTEND=noninteractive apt install -y ros-noetic-desktop-full && \
+DEBIAN_FRONTEND=noninteractive apt install -y \
+    ros-noetic-desktop-full \
+    ros-noetic-roslaunch && \
 rm -rf /var/lib/apt/lists/*
 echo "$(date -Iminutes) END - ROS software install"
 
