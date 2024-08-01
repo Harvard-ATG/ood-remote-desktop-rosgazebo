@@ -82,22 +82,22 @@ rosdep init && rosdep update
 echo "$(date -Iminutes) END - initialize rosdep"
 
 # Install universal robots from package manager
-# apt-get update -y && \
-# DEBIAN_FRONTEND=noninteractive apt-get install -y \
-#     ros-${ROSVERSION}-universal-robots && \
-# rm -rf /var/lib/apt/lists/*
+apt-get update -y && \
+DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    ros-${ROSVERSION}-universal-robots && \
+rm -rf /var/lib/apt/lists/*
 
 # Install Universal Robots from GitHub
-echo "$(date -Iminutes) START - Install Universal Robots"
-mkdir -p /opt/catkin_ws/src && \
-    cd /opt/catkin_ws/src && \
-    git clone --branch ${ROSVERSION}-devel https://github.com/ros-industrial/universal_robot.git
-cd /opt/catkin_ws && rosdep update && \
-    apt-get update -y && \
-    DEBIAN_FRONTEND=noninteractive rosdep install --rosdistro ${ROSVERSION} --ignore-src --from-paths src --default-yes  && \
-    catkin_make && \
-    rm -rf /var/lib/apt/lists/*
-echo "$(date -Iminutes) END - Install Universal Robots"
+# echo "$(date -Iminutes) START - Install Universal Robots"
+# mkdir -p /opt/catkin_ws/src && \
+#     cd /opt/catkin_ws/src && \
+#     git clone --branch ${ROSVERSION}-devel https://github.com/ros-industrial/universal_robot.git
+# cd /opt/catkin_ws && rosdep update && \
+#     apt-get update -y && \
+#     DEBIAN_FRONTEND=noninteractive rosdep install --rosdistro ${ROSVERSION} --ignore-src --from-paths src --default-yes  && \
+#     catkin_make && \
+#     rm -rf /var/lib/apt/lists/*
+# echo "$(date -Iminutes) END - Install Universal Robots"
 
 # Install VirtualGL (https://github.com/VirtualGL/virtualgl)
 echo "$(date -Iminutes) START - Install VirtualGL"
