@@ -32,7 +32,15 @@ curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | apt-key
 # Install ROS
 apt-get update -y && \
 DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    ros-${ROSVERSION}-desktop-full && \
+    ros-${ROSVERSION}-desktop && \
+rm -rf /var/lib/apt/lists/*
+echo "$(date -Iminutes) END - ROS software install"
+
+apt-get update -y && \
+DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    ros-${ROSVERSION}-perception \
+    ros-${ROSVERSION}-simulators \
+    ros-${ROSVERSION}-urdf-sim-tutorial && \
 rm -rf /var/lib/apt/lists/*
 echo "$(date -Iminutes) END - ROS software install"
 
