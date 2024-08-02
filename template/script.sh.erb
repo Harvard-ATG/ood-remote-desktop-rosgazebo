@@ -38,6 +38,11 @@ export SING_BINDS=""
 # export SING_BINDS="$SING_BINDS -B /usr/lib64/libmunge.so.2"
 # export SING_BINDS="$SING_BINDS -B /usr/lib64/libmunge.so.2.0.0"
 
+# Set environment variables within the container
+export ROSVERSION="noetic"
+export APPTAINERENV_PATH=/opt/ros/${ROSVERSION}/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+export APPTAINERENV_PYTHONPATH=/opt/ros/${ROSVERSION}/lib/python3/dist-packages
+
 echo "TIMING: $(date -Iseconds) - Launching image <%= context.image_file %> with script <%= context.launch_script %>"
 
 chmod +x "<%= session.staged_root.join("desktops", "#{context.launch_script}") %>"
