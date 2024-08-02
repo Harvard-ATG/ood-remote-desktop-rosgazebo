@@ -39,9 +39,18 @@ export SING_BINDS=""
 # export SING_BINDS="$SING_BINDS -B /usr/lib64/libmunge.so.2.0.0"
 
 # Set environment variables within the container
-export ROSVERSION="noetic"
-export APPTAINERENV_PATH=/opt/ros/${ROSVERSION}/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-export APPTAINERENV_PYTHONPATH=/opt/ros/${ROSVERSION}/lib/python3/dist-packages
+export ROS_DISTRO=noetic
+export APPTAINERENV_LD_LIBRARY_PATH=/opt/ros/${ROS_DISTRO}/lib
+export APPTAINERENV_ROS_ETC_DIR=/opt/ros/${ROS_DISTRO}/etc/ros
+export APPTAINERENV_CMAKE_PREFIX_PATH=/opt/ros/${ROS_DISTRO}
+export APPTAINERENV_ROS_ROOT=/opt/ros/${ROS_DISTRO}/share/ros
+export APPTAINERENV_ROS_VERSION=1
+export APPTAINERENV_ROS_PYTHON_VERSION=3
+export APPTAINERENV_PYTHONPATH=/opt/ros/${ROS_DISTRO}/lib/python3/dist-packages
+export APPTAINERENV_ROS_PACKAGE_PATH=/opt/ros/${ROS_DISTRO}/share
+export APPTAINERENV_ROSLISP_PACKAGE_DIRECTORIES=
+export APPTAINERENV_PATH=/opt/ros/${ROS_DISTRO}/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+export APPTAINERENV_PKG_CONFIG_PATH=/opt/ros/${ROS_DISTRO}/lib/pkgconfig
 
 echo "TIMING: $(date -Iseconds) - Launching image <%= context.image_file %> with script <%= context.launch_script %>"
 
