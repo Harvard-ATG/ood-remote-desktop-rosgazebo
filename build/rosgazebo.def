@@ -109,3 +109,18 @@ DEBIAN_FRONTEND=noninteractive apt-get install -y \
     firefox && \
 rm -rf /var/lib/apt/lists/*
 echo "$(date -Iminutes) END - Install Firefox"
+
+%environment
+export ROS_DISTRO=noetic
+export LD_LIBRARY_PATH=/opt/ros/${ROS_DISTRO}/lib
+export ROS_ETC_DIR=/opt/ros/${ROS_DISTRO}/etc/ros
+export CMAKE_PREFIX_PATH=/opt/ros/${ROS_DISTRO}
+export ROS_ROOT=/opt/ros/${ROS_DISTRO}/share/ros
+export ROS_VERSION=1
+export ROS_PYTHON_VERSION=3
+export PYTHONPATH=/opt/ros/${ROS_DISTRO}/lib/python3/dist-packages
+export ROS_PACKAGE_PATH=/opt/ros/${ROS_DISTRO}/share
+export ROSLISP_PACKAGE_DIRECTORIES=
+export PATH=/opt/ros/${ROS_DISTRO}/bin:$PATH
+export PKG_CONFIG_PATH=/opt/ros/${ROS_DISTRO}/lib/pkgconfig
+export ROS_MASTER_URI=http://localhost:11311
