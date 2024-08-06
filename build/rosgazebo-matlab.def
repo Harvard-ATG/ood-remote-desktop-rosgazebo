@@ -28,6 +28,7 @@ echo "$(date -Iminutes) START - MATLAB install" && \
 echo -e "SERVER UISWAPPS1000093.university.harvard.edu 12E65114057A 27002\nUSE_SERVER" > /tmp/network.lic
 cd /opt/MATLAB
 ./install -inputFile /opt/MATLAB/installer_input.txt
+cat /tmp/mathworks_container.log
 echo "$(date -Iminutes) END - MATLAB install"
 
 dpkg-reconfigure locales
