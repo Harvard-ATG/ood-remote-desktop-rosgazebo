@@ -71,12 +71,6 @@ echo "$(date -Iminutes) START - initialize rosdep"
 rosdep init && rosdep update
 echo "$(date -Iminutes) END - initialize rosdep"
 
-# Install universal robots from package manager
-# apt-get update -y && \
-# DEBIAN_FRONTEND=noninteractive apt-get install -y \
-#     ros-${ROS_DISTRO}-universal-robots && \
-# rm -rf /var/lib/apt/lists/*
-
 # Install Universal Robots from GitHub
 echo "$(date -Iminutes) START - Install Universal Robots"
 mkdir -p /opt/catkin_ws/src && \
