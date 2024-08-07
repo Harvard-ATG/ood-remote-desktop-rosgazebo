@@ -2,7 +2,7 @@ Bootstrap: docker
 From: ubuntu:20.04
 
 %files
-/opt/MATLAB
+/shared/MATLAB /opt/MATLAB
 
 %post
 ROS_DISTRO="noetic"
