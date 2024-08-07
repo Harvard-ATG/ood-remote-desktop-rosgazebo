@@ -2,7 +2,7 @@ Bootstrap: docker
 From: mathworks/matlab:R2023a
 
 %files
-/shared/MATLAB /opt/MATLAB
+/opt/MATLAB
 
 %post
 ROS_DISTRO="noetic"
@@ -14,6 +14,7 @@ DEBIAN_FRONTEND=noninteractive apt-get install -y \
     lsb-release \
     gnupg \
     xfce4 \
+    xfce4-goodies \
     xfce4-terminal \
     vim \
     git \
@@ -24,12 +25,12 @@ rm -rf /var/lib/apt/lists/* && \
 echo "$(date -Iminutes) END - apt package install"
 
 # Install Matlab
-# echo "$(date -Iminutes) START - MATLAB install" && \
-# echo -e "SERVER UISWAPPS1000093.university.harvard.edu 12E65114057A 27002\nUSE_SERVER" > /tmp/network.lic
-# cd /opt/MATLAB
-# ./install -inputFile /opt/MATLAB/installer_input.txt
-# cat /tmp/mathworks_container.log
-# echo "$(date -Iminutes) END - MATLAB install"
+echo "$(date -Iminutes) START - MATLAB install" && \
+echo -e "SERVER UISWAPPS1000093.university.harvard.edu 12E65114057A 27002\nUSE_SERVER" > /tmp/network.lic
+cd /opt/MATLAB
+./install -inputFile /opt/MATLAB/installer_input.txt
+cat /tmp/mathworks_container.log
+echo "$(date -Iminutes) END - MATLAB install"
 
 dpkg-reconfigure locales
 
