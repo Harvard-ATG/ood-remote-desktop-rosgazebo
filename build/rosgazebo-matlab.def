@@ -1,5 +1,5 @@
 Bootstrap: docker
-From: mathworks/matlab:R2023a
+From: ubuntu:20.04
 
 %files
 /opt/MATLAB
