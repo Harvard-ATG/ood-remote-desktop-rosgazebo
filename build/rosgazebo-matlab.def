@@ -31,6 +31,8 @@ cd /opt/MATLAB_INSTALL
 cat /tmp/mathworks_container.log
 mkdir -p /opt/MATLAB/R2024a/licenses
 cp /opt/MATLAB_INSTALL/network.lic /opt/MATLAB/R2024a/licenses/network.lic
+cd
+rm -rf /opt/MATLAB_INSTALL
 echo "$(date -Iminutes) END - MATLAB install"
 
 dpkg-reconfigure locales
