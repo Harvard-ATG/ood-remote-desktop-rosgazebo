@@ -26,12 +26,11 @@ echo "$(date -Iminutes) END - apt package install"
 
 # Install Matlab
 echo "$(date -Iminutes) START - MATLAB install" && \
-echo -e "SERVER UISWAPPS1000093.university.harvard.edu 12E65114057A 27002\nUSE_SERVER" > /opt/MATLAB_INSTALL/network.lic
 cd /opt/MATLAB_INSTALL
 ./install -inputFile /opt/MATLAB_INSTALL/installer_input.txt
 cat /tmp/mathworks_container.log
 mkdir -p /opt/MATLAB/R2024a/licenses
-echo -e "SERVER UISWAPPS1000093.university.harvard.edu 12E65114057A 27002\nUSE_SERVER" > /opt/MATLAB/R2024a/licenses/network.lic
+cp /opt/MATLAB_INSTALL/network.lic /opt/MATLAB/R2024a/licenses/network.lic
 echo "$(date -Iminutes) END - MATLAB install"
 
 dpkg-reconfigure locales
