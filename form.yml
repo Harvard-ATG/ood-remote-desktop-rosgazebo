@@ -13,7 +13,7 @@ form:
   - bc_vnc_resolution
   - bc_queue
 attributes:
-  image_file: "libgazebo.sif"
+  image_file: "rosgazebo.sif"
   launch_script: "xfce.sh"
   bc_num_slots: null
   custom_num_cores:
