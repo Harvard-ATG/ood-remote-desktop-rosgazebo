@@ -20,7 +20,9 @@ DEBIAN_FRONTEND=noninteractive apt-get install -y \
     git \
     xdg-utils \
     apt-utils \
-    python3-venv \
+    python3.9 \
+    python3.9-venv \
+    python3.9-dev \
     language-pack-en-base && \
 rm -rf /var/lib/apt/lists/* && \
 echo "$(date -Iminutes) END - apt package install"
