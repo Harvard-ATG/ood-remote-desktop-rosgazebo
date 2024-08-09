@@ -1,6 +1,9 @@
 Bootstrap: docker
 From: ubuntu:20.04
 
+%files
+/shared/MATLAB /opt/MATLAB_INSTALL
+
 %post
 ROS_DISTRO="noetic"
 # Install packages needed for baseline desktop and ros installation
@@ -11,14 +14,29 @@ DEBIAN_FRONTEND=noninteractive apt-get install -y \
     lsb-release \
     gnupg \
     xfce4 \
+    xfce4-goodies \
     xfce4-terminal \
     vim \
     git \
     xdg-utils \
     apt-utils \
+    python3.9 \
+    python3.9-venv \
+    python3.9-dev \
     language-pack-en-base && \
 rm -rf /var/lib/apt/lists/* && \
 echo "$(date -Iminutes) END - apt package install"
+
+# Install Matlab
+echo "$(date -Iminutes) START - MATLAB install" && \
+cd /opt/MATLAB_INSTALL
+./install -inputFile /opt/MATLAB_INSTALL/installer_input.txt
+cat /tmp/mathworks_container.log
+mkdir -p /opt/MATLAB/R2024a/licenses
+cp /opt/MATLAB_INSTALL/network.lic /opt/MATLAB/R2024a/licenses/network.lic
+cd
+rm -rf /opt/MATLAB_INSTALL
+echo "$(date -Iminutes) END - MATLAB install"
 
 dpkg-reconfigure locales
 
