@@ -56,3 +56,17 @@ Terminal=false
 StartupNotify=false
 EOF
 chmod +x $DESKTOP_FOLDER/VSCodium.desktop
+
+# Create a desktop icon for MATLAB
+cat > $DESKTOP_FOLDER/MATLAB.desktop <<EOF
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=MATLAB
+Comment=MATLAB
+Exec=/opt/MATLAB/R2024a/bin/matlab -desktop -softwareopengl &
+Icon=<%= session.staged_root.join("assets", "matlab.png") %>
+Terminal=false
+StartupNotify=false
+EOF
+chmod +x $DESKTOP_FOLDER/MATLAB.desktop

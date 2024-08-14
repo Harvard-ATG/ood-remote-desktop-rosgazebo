@@ -6,6 +6,7 @@ echo "TIMING: $(date -Iseconds) - Start script"
 echo "original HOME=$HOME"
 echo "user=$(id -nu)"
 export HOME="/shared/home/$(id -nu)"
+export APPTAINER_HOME=$HOME
 echo "new HOME=$HOME"
 
 # Change working directory to user's home directory

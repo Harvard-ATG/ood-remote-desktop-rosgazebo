@@ -14,6 +14,11 @@ if [[ ! -e "${PANEL_CONFIG}" ]]; then
 fi
 echo "TIMING: $(date -Iseconds) - Copied default panel config"
 
+echo "TIMING: $(date -Iseconds) - Setting dbus options"
+# This seems to resolve some errors reported in the output.log file
+# Set the dbus variable:
+export $(dbus-launch)
+
 # Disable startup services
 xfconf-query -c xfce4-session -p /startup/ssh-agent/enabled -n -t bool -s false
 xfconf-query -c xfce4-session -p /startup/gpg-agent/enabled -n -t bool -s false
