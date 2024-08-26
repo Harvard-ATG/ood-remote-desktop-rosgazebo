@@ -1,5 +1,5 @@
 ---
-title: Remote Desktop - ROS/Gazebo
+title: Remote Desktop - Matlab/ROS/Gazebo
 cluster: "*"
 form:
   - bc_num_hours
