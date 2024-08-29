@@ -22,6 +22,38 @@ export $(dbus-launch)
 # Disable startup services
 xfconf-query -c xfce4-session -p /startup/ssh-agent/enabled -n -t bool -s false
 xfconf-query -c xfce4-session -p /startup/gpg-agent/enabled -n -t bool -s false
+
+xfconf-query \
+    --channel xfce4-power-manager \
+    --property /xfce4-power-manager/dpms-enabled \
+    --create \
+    --type bool \
+    --set true
+
+xfconf-query \
+    --channel xfce4-power-manager \
+    --property /xfce4-power-manager/dpms-on-ac-off \
+    --create \
+    --set 0 \
+    --type int
+
+xfconf-query \
+    --channel xfce4-power-manager \
+    --property /xfce4-power-manager/dpms-on-ac-sleep \
+    --create \
+    --set 0 \
+    --type int
+
+xfconf-query \
+    --channel xfce4-power-manager \
+    --property /xfce4-power-manager/blank-on-ac \
+    --create \
+    --set 0 \
+    --type int
+
+# show the power management settings
+xfconf-query --channel xfce4-power-manager --list --verbose
+
 echo "TIMING: $(date -Iseconds) - Disabled startup services"
 
 # Disable useless services on autostart
