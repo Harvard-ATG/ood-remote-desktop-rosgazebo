@@ -35,14 +35,14 @@ xfconf-query \
     --property /xfce4-power-manager/dpms-on-ac-off \
     --create \
     --set 0 \
-    --type int
+    --type uint
 
 xfconf-query \
     --channel xfce4-power-manager \
     --property /xfce4-power-manager/dpms-on-ac-sleep \
     --create \
     --set 0 \
-    --type int
+    --type uint
 
 xfconf-query \
     --channel xfce4-power-manager \
