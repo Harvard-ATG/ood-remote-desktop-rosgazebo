@@ -19,6 +19,41 @@ xfconf-query -c xfce4-session -p /startup/ssh-agent/enabled -n -t bool -s false
 xfconf-query -c xfce4-session -p /startup/gpg-agent/enabled -n -t bool -s false
 echo "TIMING: $(date -Iseconds) - Disabled startup services"
 
+# Turn off power saving measures that turn off the display
+# See https://github.com/Harvard-ATG/ood-remote-desktop/pull/4
+# for additional context on these options
+xfconf-query \
+    --channel xfce4-power-manager \
+    --property /xfce4-power-manager/dpms-enabled \
+    --create \
+    --type bool \
+    --set true
+
+xfconf-query \
+    --channel xfce4-power-manager \
+    --property /xfce4-power-manager/dpms-on-ac-off \
+    --create \
+    --set 0 \
+    --type uint
+
+xfconf-query \
+    --channel xfce4-power-manager \
+    --property /xfce4-power-manager/dpms-on-ac-sleep \
+    --create \
+    --set 0 \
+    --type uint
+
+xfconf-query \
+    --channel xfce4-power-manager \
+    --property /xfce4-power-manager/blank-on-ac \
+    --create \
+    --set 0 \
+    --type int
+
+# Show the power management settings in output
+echo "xfconf-query settings for xfce-power-manager:"
+xfconf-query --channel xfce4-power-manager --list --verbose
+
 # Disable useless services on autostart
 AUTOSTART="${HOME}/.config/autostart"
 rm -fr "${AUTOSTART}"    # clean up previous autostarts
