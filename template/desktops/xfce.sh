@@ -20,6 +20,8 @@ xfconf-query -c xfce4-session -p /startup/gpg-agent/enabled -n -t bool -s false
 echo "TIMING: $(date -Iseconds) - Disabled startup services"
 
 # Turn off power saving measures that turn off the display
+# See https://github.com/Harvard-ATG/ood-remote-desktop/pull/4
+# for additional context on these options
 xfconf-query \
     --channel xfce4-power-manager \
     --property /xfce4-power-manager/dpms-enabled \
