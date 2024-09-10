@@ -22,7 +22,8 @@ spack env activate apptainer
 echo "TIMING: $(date -Iseconds) - Loaded environment"
 
 # Set which container to use
-container_image=/shared/apptainerImages/<%= context.image_file %>
+IMAGE_DIR=/shared/courseSharedFolders/136859outer/136859/apptainer
+container_image=$IMAGE_DIR/<%= context.image_file %>
 
 export SING_BINDS=""
 export SING_BINDS="$SING_BINDS -B /shared/courseSharedFolders"
