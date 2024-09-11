@@ -13,7 +13,12 @@ form:
   - bc_vnc_resolution
   - bc_queue
 attributes:
-  image_file: "rosgazebo.sif"
+  image_file: 
+    widget: "text_field"
+    value: "rosgazebo.sif"
+    label: "Apptainer Image File"
+    help: |
+      The image file to be loaded. This will be loaded from `/shared/courseSharedFolders/136859outer/136859/apptainer`, so the image file must exist there.
   launch_script: "xfce.sh"
   bc_num_slots: null
   custom_num_cores:
