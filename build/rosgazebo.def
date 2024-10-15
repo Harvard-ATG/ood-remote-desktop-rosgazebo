@@ -54,7 +54,9 @@ DEBIAN_FRONTEND=noninteractive apt-get install -y \
     ros-${ROS_DISTRO}-desktop-full \
     ros-${ROS_DISTRO}-roslaunch \
     ros-${ROS_DISTRO}-ur-gazebo \
-    ros-${ROS_DISTRO}-ur5-moveit-config && \
+    ros-${ROS_DISTRO}-ur5-moveit-config \
+    ros-${ROS_DISTRO}-ros-control \
+    ros-${ROS_DISTRO}-ros-controllers && \
 rm -rf /var/lib/apt/lists/*
 echo "$(date -Iminutes) END - ROS software install"
 
